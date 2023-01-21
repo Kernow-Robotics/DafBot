@@ -69,7 +69,6 @@ def demo(**kwargs: dict[str, str]) -> None:
     if the Daffodil is classified as mature.
     This is a basic movement pattern for demonstrating the gantry and gripper.
     """
-    print(kwargs)
     dafBot = generate_gantry_without_lim_switches() if kwargs.get("no_lim_switches") else generate_gantry_with_lim_switches()
     a_field_of_flowers = \
         generate_list_of_random_daffodils(
