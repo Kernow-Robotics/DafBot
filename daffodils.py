@@ -3,6 +3,16 @@ from random import randint, choice
 
 
 @dataclass(frozen=True)
+class Target:
+    """
+    Defines a point in space representing some target.
+    """
+    x: int
+    y: int
+    z: int
+
+
+@dataclass(frozen=True)
 class GantryWorkspace:
     """
     The gantry's permissible operating volume.
@@ -14,17 +24,7 @@ class GantryWorkspace:
     y_max: int = 220
     z_min: int = -235
     z_max: int = 0
-    home_coord: tuple[int, int, int] = (730, 0, 0)
-
-
-@dataclass
-class Target:
-    """
-    Defines a point in space representing some target.
-    """
-    x: int
-    y: int
-    z: int
+    home_coord: Target = Target(730, 0, 0)
 
 
 @dataclass(frozen=True)
@@ -34,7 +34,7 @@ class Daffodil:
     Values cannot be changed after instantiation (immutable).
     """
     location: Target
-    mature: bool
+    is_mature: bool
 
 
 def generate_random_daffodil(spawn_volume: GantryWorkspace) -> Daffodil:
