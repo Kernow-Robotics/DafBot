@@ -4,8 +4,10 @@ import time
 import sys
 
 dafBot = Gantry(FCOM())
-# Sets home position for all Vectors, assigns 0,0,0
-dafBot.home_all()
+# Assigns current position as 0,0,0, make sure you move head to start position to ensure it sets home correctly. 
+dafBot.send_command('$X')
+dafBot.move([0,0,240],11000)
+dafBot.set_current_position_as_home()
 
 # Main Loop
 while True:

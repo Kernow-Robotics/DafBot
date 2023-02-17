@@ -116,10 +116,13 @@ class Gantry(object):
         # print('waiting for completion')
         self.send_command('G4 P0')
 
+    def set_current_position_as_home(self):
+        self.send_command('G92 X0 Y0 Z0')
+
     def home_all(self):
         self.send_command('$H', 1)
         self.wait_until_finished()
-        self.send_command('G92 X0 Y0 Z0')
+        self.set_current_position_as_home()
 
     def home_x(self):
         self.send_command('$HX', 1)
